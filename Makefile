@@ -1,6 +1,7 @@
 VERSION := $(shell cat VERSION.txt)
 PREFIX?=$(shell pwd)
 EXAMPLES_DIR := examples
+DO_TF_UPGRADE ?= false
 
 ## Tools
 BINDIR := $(PREFIX)/bin
@@ -13,7 +14,7 @@ all: init fmt validate tflint tfsec
 .PHONY: init
 init: ## Initialize a Terraform working directory
 	@echo "+ $@"
-	@terraform init
+	@terraform init -upgrade=$(DO_TF_UPGRADE)
 
 .PHONY: fmt
 fmt: ## Rewrites Terraform files to canonical format
@@ -33,7 +34,7 @@ tflint: ## Runs tflint on all Terraform files
 .PHONY: tfsec
 tfsec: ## Runs tfsec on all Terraform files
 	@echo "+ $@"
-	@tfsec || exit 1
+	@tfsec --config-file=.tfsec.json || exit 1
 
 .PHONY: test
 test: ## Runs all terratests

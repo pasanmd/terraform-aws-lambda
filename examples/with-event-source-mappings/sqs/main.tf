@@ -1,9 +1,11 @@
 resource "aws_sqs_queue" "queue_1" {
-  name = "example-sqs-queue-1"
+  name              = "example-sqs-queue-1"
+  kms_master_key_id = "alias/aws/sqs"
 }
 
 resource "aws_sqs_queue" "queue_2" {
-  name = "example-sqs-queue-2"
+  name              = "example-sqs-queue-2"
+  kms_master_key_id = "alias/aws/sqs"
 }
 
 data "archive_file" "sqs_handler" {

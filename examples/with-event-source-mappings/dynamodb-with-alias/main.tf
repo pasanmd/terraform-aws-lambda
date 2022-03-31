@@ -10,6 +10,10 @@ resource "aws_dynamodb_table" "table_1" {
     name = "UserId"
     type = "S"
   }
+
+  server_side_encryption {
+    enabled = true
+  }
 }
 
 resource "aws_dynamodb_table" "table_2" {
@@ -23,6 +27,10 @@ resource "aws_dynamodb_table" "table_2" {
   attribute {
     name = "UserId"
     type = "S"
+  }
+
+  server_side_encryption {
+    enabled = true
   }
 }
 
@@ -78,5 +86,6 @@ module "lambda" {
 }
 
 resource "aws_sqs_queue" "errors" {
-  name = "${module.lambda.function_name}-processing-errors"
+  name              = "${module.lambda.function_name}-processing-errors"
+  kms_master_key_id = "alias/aws/sqs"
 }

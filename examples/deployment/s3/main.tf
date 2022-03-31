@@ -59,6 +59,14 @@ resource "aws_s3_bucket" "source" {
   bucket        = "example-ci-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
   force_destroy = true
 
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "aws:kms"
+      }
+    }
+  }
+
   versioning {
     enabled = true
   }

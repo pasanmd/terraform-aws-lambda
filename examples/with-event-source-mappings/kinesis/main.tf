@@ -1,11 +1,13 @@
 resource "aws_kinesis_stream" "stream_1" {
-  name        = "example-kinesis-stream-1"
-  shard_count = 1
+  name            = "example-kinesis-stream-1"
+  encryption_type = "KMS"
+  shard_count     = 1
 }
 
 resource "aws_kinesis_stream" "stream_2" {
-  name        = "example-kinesis-stream-2"
-  shard_count = 1
+  name            = "example-kinesis-stream-2"
+  encryption_type = "KMS"
+  shard_count     = 1
 }
 
 data "archive_file" "kinesis_handler" {

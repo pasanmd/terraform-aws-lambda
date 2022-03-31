@@ -98,6 +98,14 @@ resource "aws_s3_bucket" "pipeline" {
   bucket        = "${var.function_name}-pipeline-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
   force_destroy = true
   tags          = var.tags
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "aws:kms"
+      }
+    }
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "source" {

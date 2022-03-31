@@ -1,0 +1,15 @@
+{
+  "exclude": [
+    "aws-cloudwatch-log-group-customer-key",
+    "aws-dynamodb-enable-recovery",
+    "aws-dynamodb-table-customer-key",
+    "aws-ecr-repository-customer-key",
+    "aws-kinesis-enable-in-transit-encryption",
+    "aws-lambda-enable-tracing",
+    "aws-sns-enable-topic-encryption",
+    "aws-sqs-enable-queue-encryption",
+    "aws-s3-enable-bucket-logging",
+    "aws-s3-enable-versioning",
+    "aws-s3-encryption-customer-key"
+  ]
+}

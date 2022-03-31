@@ -1,9 +1,11 @@
 resource "aws_sns_topic" "topic_1" {
-  name = "example-sns-topic-1"
+  name              = "example-sns-topic-1"
+  kms_master_key_id = "alias/aws/sns"
 }
 
 resource "aws_sns_topic" "topic_2" {
-  name = "example-sns-topic-2"
+  name              = "example-sns-topic-2"
+  kms_master_key_id = "alias/aws/sns"
 }
 
 resource "aws_lambda_alias" "example" {

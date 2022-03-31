@@ -161,4 +161,3 @@ resource "aws_s3_bucket_object" "source" {
 
 - [container-image (ECR)](../../examples/deployment/container-image)
 - [zipped package (S3)](../../examples/deployment/s3)
-
